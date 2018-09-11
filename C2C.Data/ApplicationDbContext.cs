@@ -22,6 +22,7 @@ namespace C2C.Data
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Review> Review { get; set; }
+        public DbSet<Cart> Carts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

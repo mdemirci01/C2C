@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace C2C.Service
 {
-    class CartItemService :ICartService
+    public class CartItemService :ICartItemService
     {
         private readonly IRepository<Product> productRepository;
         private readonly IUnitOfWork unitOfWork;

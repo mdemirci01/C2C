@@ -45,6 +45,8 @@ namespace C2C.UI
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<ICouponService, CouponService>();
+            services.AddTransient<IShippingService, ShippingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\C2C.Data\C2C.Data.csproj" />
+    <ProjectReference Include="..\C2C.Models\C2C.Models.csproj" />
+  </ItemGroup>
+
+</Project>

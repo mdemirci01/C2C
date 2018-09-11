@@ -18,6 +18,8 @@ namespace C2C.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<ProductPhoto> ProductPhotos { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Review> Review { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -27,6 +27,7 @@ namespace C2C.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             //modelBuilder.Entity<Post>().HasQueryFilter(p => !p.IsDeleted);
         }
     }

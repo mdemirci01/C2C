@@ -6,7 +6,7 @@ using System.Text;
 
 namespace C2C.Models
 {
-   public class CartItem
+   public class CartItem:BaseEntity
     {
         [Display(Name="Ürün")]
         public string ProductId { get; set; }

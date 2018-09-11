@@ -5,7 +5,7 @@ using System.Text;
 
 namespace C2C.Models
 {
-   public  class Cart
+   public class Cart:BaseEntity
     {
         [Display(Name = "Total")]
         public decimal Total { get; }

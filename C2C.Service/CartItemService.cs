@@ -7,64 +7,64 @@ using System.Threading.Tasks;
 
 namespace C2C.Service
 {
-    class CartItemService :ICartService
+    public class CartItemService :ICartItemService
     {
-        private readonly IRepository<Product> productRepository;
+        private readonly IRepository<CartItem> cartItemRepository;
         private readonly IUnitOfWork unitOfWork;
-        public CartItemService(IUnitOfWork unitOfWork, IRepository<Product> productRepository)
+        public CartItemService(IUnitOfWork unitOfWork, IRepository<CartItem> cartItemRepository)
         {
-            this.productRepository = productRepository;
+            this.cartItemRepository = cartItemRepository;
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task DeleteAsync(Product entity)
+        public async Task DeleteAsync(CartItem entity)
         {
-            productRepository.Delete(entity);
+            cartItemRepository.Delete(entity);
             await unitOfWork.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(string id)
         {
-            var entity = await productRepository.GetAsync(id);
-            productRepository.Delete(entity);
+            var entity = await cartItemRepository.GetAsync(id);
+            cartItemRepository.Delete(entity);
             await unitOfWork.SaveChangesAsync();
         }
 
-        public async Task<Product> GetAsync(string id)
+        public async Task<CartItem> GetAsync(string id)
         {
-            return await productRepository.GetAsync(id);
+            return await cartItemRepository.GetAsync(id);
         }
 
-        public async Task<IEnumerable<Product>> GetAllAsync()
+        public async Task<IEnumerable<CartItem>> GetAllAsync()
         {
-            return await productRepository.GetAllAsync();
+            return await cartItemRepository.GetAllAsync();
         }
 
-        public async Task InsertAsync(Product entity)
+        public async Task InsertAsync(CartItem entity)
         {
-            productRepository.Insert(entity);
+            cartItemRepository.Insert(entity);
             await unitOfWork.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(Product entity)
+        public async Task UpdateAsync(CartItem entity)
         {
-            productRepository.Update(entity);
+            cartItemRepository.Update(entity);
             await unitOfWork.SaveChangesAsync();
         }
 
         public async Task<bool> AnyAsync(string id)
         {
-            return await productRepository.AnyAsync(a => a.Id == id);
+            return await cartItemRepository.AnyAsync(a => a.Id == id);
         }
     }
 
     public interface ICartItemService
     {
-        Task<IEnumerable<Product>> GetAllAsync();
-        Task<Product> GetAsync(string id);
-        Task InsertAsync(Product entity);
-        Task UpdateAsync(Product entity);
-        Task DeleteAsync(Product entity);
+        Task<IEnumerable<CartItem>> GetAllAsync();
+        Task<CartItem> GetAsync(string id);
+        Task InsertAsync(CartItem entity);
+        Task UpdateAsync(CartItem entity);
+        Task DeleteAsync(CartItem entity);
         Task DeleteAsync(string id);
         Task<bool> AnyAsync(string id);
     }

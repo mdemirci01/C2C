@@ -151,6 +151,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <i class="icon-diamond"></i>
                                 <span class="title">Ürünler</span>
                             </a>
+                        </li>
+                        <li class="nav-item @(this.ViewContext.RouteData.Values["controller"].ToString() == "Stores"?"active":"")">
                             <a asp-action="Index" asp-controller="Stores" class="nav-link">
                                 <i class="icon-diamond"></i>
                                 <span class="title">Mağazalar</span>
@@ -160,6 +162,12 @@ License: You must have a valid license purchased only from themeforest(the above
                             <a asp-action="Index" asp-controller="Categories" class="nav-link">
                                 <i class="icon-diamond"></i>
                                 <span class="title">Kategoriler</span>
+                            </a>
+                        </li>
+                        <li class="nav-item @(this.ViewContext.RouteData.Values["controller"].ToString() == "Coupon"?"active":"")">
+                            <a asp-action="Index" asp-controller="Coupons" class="nav-link">
+                                <i class="icon-diamond"></i>
+                                <span class="title">Kuponlar</span>
                             </a>
                         </li>
                     </ul>

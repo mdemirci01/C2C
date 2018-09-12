@@ -164,6 +164,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <span class="title">Kategoriler</span>
                             </a>
                         </li>
+                        <li class="nav-item @(this.ViewContext.RouteData.Values["controller"].ToString() == "Orders"?"active":"")">
+                            <a asp-action="Index" asp-controller="Orders" class="nav-link">
+                                <i class="icon-diamond"></i>
+                                <span class="title">Siparişler</span>
+                            </a>
+                        </li>
                     </ul>
 					<!-- END SIDEBAR MENU -->
 					<!-- END SIDEBAR MENU -->

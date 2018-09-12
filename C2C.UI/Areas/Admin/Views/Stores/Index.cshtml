@@ -1,15 +1,15 @@
-﻿@model IEnumerable<C2C.Models.Product>
+﻿@model IEnumerable<C2C.Models.Store>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Mağazalar</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Yeni Mağaza</a>
 </p>
-<table id="tblRecords" class="table" >
+<table class="table">
     <thead>
         <tr>
             <th>
@@ -19,31 +19,31 @@
                 @Html.DisplayNameFor(model => model.Slug)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ShortDescription)
+                @Html.DisplayNameFor(model => model.Logo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AdditionalInformation)
+                @Html.DisplayNameFor(model => model.IsActive)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OldPrice)
+                @Html.DisplayNameFor(model => model.Rating)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.Address)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsPublished)
+                @Html.DisplayNameFor(model => model.Phone)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Category)
+                @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Availibility)
+                @Html.DisplayNameFor(model => model.Owner)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Currency)
+                @Html.DisplayNameFor(model => model.ContactName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CreatedBy)
@@ -69,7 +69,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.IpAddress)
             </th>
-            <th class="text-nowrap all">Eylemler</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -82,31 +82,31 @@
                 @Html.DisplayFor(modelItem => item.Slug)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ShortDescription)
+                @Html.DisplayFor(modelItem => item.Logo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AdditionalInformation)
+                @Html.DisplayFor(modelItem => item.IsActive)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OldPrice)
+                @Html.DisplayFor(modelItem => item.Rating)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price)
+                @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsPublished)
+                @Html.DisplayFor(modelItem => item.Phone)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Category.Id)
+                @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Availibility)
+                @Html.DisplayFor(modelItem => item.Owner)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Currency)
+                @Html.DisplayFor(modelItem => item.ContactName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedBy)
@@ -132,10 +132,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IpAddress)
             </td>
-            <td class="text-nowrap">
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-success">Düzenle</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-default">Detaylar</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Sil</a>
             </td>
         </tr>
 }

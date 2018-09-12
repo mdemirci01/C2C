@@ -11,23 +11,22 @@ using C2C.Models;
 namespace C2C.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class ProductsController : Controller
+    public class StoresController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ProductsController(ApplicationDbContext context)
+        public StoresController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Admin/Products
+        // GET: Admin/Stores
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Products.Include(p => p.Category);
-            return View(await applicationDbContext.ToListAsync());
+            return View(await _context.Stores.ToListAsync());
         }
 
-        // GET: Admin/Products/Details/5
+        // GET: Admin/Stores/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -35,42 +34,39 @@ namespace C2C.UI.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products
-                .Include(p => p.Category)
+            var store = await _context.Stores
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            if (store == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(store);
         }
 
-        // GET: Admin/Products/Create
+        // GET: Admin/Stores/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
             return View();
         }
 
-        // POST: Admin/Products/Create
+        // POST: Admin/Stores/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Slug,ShortDescription,Description,AdditionalInformation,OldPrice,Price,IsPublished,CategoryId,Availibility,Currency,Id,CreatedBy,CreatedAt,UpdatedBy,UpdatedAt,IsDeleted,DeletedBy,DeletedAt,IpAddress")] Product product)
+        public async Task<IActionResult> Create([Bind("Name,Slug,Logo,Description,IsActive,Rating,Address,Phone,Email,Owner,ContactName,Id,CreatedBy,CreatedAt,UpdatedBy,UpdatedAt,IsDeleted,DeletedBy,DeletedAt,IpAddress")] Store store)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(product);
+                _context.Add(store);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
-            return View(product);
+            return View(store);
         }
 
-        // GET: Admin/Products/Edit/5
+        // GET: Admin/Stores/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -78,23 +74,22 @@ namespace C2C.UI.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
+            var store = await _context.Stores.FindAsync(id);
+            if (store == null)
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
-            return View(product);
+            return View(store);
         }
 
-        // POST: Admin/Products/Edit/5
+        // POST: Admin/Stores/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Name,Slug,ShortDescription,Description,AdditionalInformation,OldPrice,Price,IsPublished,CategoryId,Availibility,Currency,Id,CreatedBy,CreatedAt,UpdatedBy,UpdatedAt,IsDeleted,DeletedBy,DeletedAt,IpAddress")] Product product)
+        public async Task<IActionResult> Edit(string id, [Bind("Name,Slug,Logo,Description,IsActive,Rating,Address,Phone,Email,Owner,ContactName,Id,CreatedBy,CreatedAt,UpdatedBy,UpdatedAt,IsDeleted,DeletedBy,DeletedAt,IpAddress")] Store store)
         {
-            if (id != product.Id)
+            if (id != store.Id)
             {
                 return NotFound();
             }
@@ -103,12 +98,12 @@ namespace C2C.UI.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(product);
+                    _context.Update(store);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.Id))
+                    if (!StoreExists(store.Id))
                     {
                         return NotFound();
                     }
@@ -119,11 +114,10 @@ namespace C2C.UI.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
-            return View(product);
+            return View(store);
         }
 
-        // GET: Admin/Products/Delete/5
+        // GET: Admin/Stores/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -131,31 +125,30 @@ namespace C2C.UI.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Products
-                .Include(p => p.Category)
+            var store = await _context.Stores
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            if (store == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(store);
         }
 
-        // POST: Admin/Products/Delete/5
+        // POST: Admin/Stores/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var product = await _context.Products.FindAsync(id);
-            _context.Products.Remove(product);
+            var store = await _context.Stores.FindAsync(id);
+            _context.Stores.Remove(store);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductExists(string id)
+        private bool StoreExists(string id)
         {
-            return _context.Products.Any(e => e.Id == id);
+            return _context.Stores.Any(e => e.Id == id);
         }
     }
 }

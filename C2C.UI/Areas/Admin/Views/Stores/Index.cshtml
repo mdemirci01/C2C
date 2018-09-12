@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Yeni Mağaza</a>
 </p>
-<table class="table">
+<table id="tblRecords" class="table">
     <thead>
         <tr>
             <th>
@@ -69,7 +69,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.IpAddress)
             </th>
-            <th></th>
+            <th class="text-nowrap all">Eylemler</th>
         </tr>
     </thead>
     <tbody>

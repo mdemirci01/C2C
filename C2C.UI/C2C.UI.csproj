@@ -16,4 +16,8 @@
     <ProjectReference Include="..\C2C.Service\C2C.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Services\" />
+  </ItemGroup>
+
 </Project>

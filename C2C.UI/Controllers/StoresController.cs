@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace C2C.UI.Controllers
 {
-    public class StoresDetailController : Controller
+    public class StoresController : Controller
     {
         public IActionResult Index()
         {

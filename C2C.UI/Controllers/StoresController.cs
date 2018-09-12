@@ -2,15 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using C2C.Data;
+using C2C.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace C2C.UI.Controllers
 {
     public class StoresController : Controller
     {
-        public IActionResult Index()
+		private readonly ApplicationDbContext context;
+		public StoresController(ApplicationDbContext context)
+		{
+			this.context = context;
+		}
+
+		public IActionResult Index()
         {
-            return View();
+			var stores = context.Stores.ToList();
+			return View(stores);
         }
 
 		public IActionResult Create()

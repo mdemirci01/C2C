@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace C2C.Service
 {
-    public class StoreService : IStoreService
+    public class storeService : IStoreService
     {
         private readonly IRepository<Store> storeRepository;
         private readonly IUnitOfWork unitOfWork;
-        public StoreService(IUnitOfWork unitOfWork, IRepository<Store> storeRepository)
+        public storeService(IUnitOfWork unitOfWork, IRepository<Store> storeRepository)
         {
             this.storeRepository = storeRepository;
             this.unitOfWork = unitOfWork;

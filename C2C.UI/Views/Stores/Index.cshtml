@@ -1,0 +1,45 @@
+﻿@model IEnumerable<C2C.Models.Store>
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h2>Mağaza Sil</h2>
+<p>
+	<a asp-action="Create" class="btn btn-sm btn-primary">Mağaza ve Hizmet</a>
+</p>
+<table class="table table-hover table-striped" id="tblRecords">
+	<thead>
+		<tr>
+			<th>Ad</th>
+			<th>Fiyat</th>
+			<th>Açıklama</th>
+			<th>Bağlantı</th>
+			<th>Telefon</th>
+			<th>E-mail</th>
+			<th>Aktif mi</th>
+			<th>Derecesi</th>
+			<th>Adres</th>
+			<th>Sahib</th>
+			<th>Eylemler</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.Name</td>
+				<td>@item.Slug</td>
+				<td>@item.Phone</td>
+				<td>@item.Email</td>
+				<td>@item.Description</td>
+				<td>@item.IsActive</td>
+				<td>@item.Rating</td>
+				<td>@item.Address</td>
+				<td>@item.Owner</td>
+				<td>@item.ContactName</td>
+				<td><a asp-action="Edit" class="btn btn-sm btn-success" asp-route-id="@item.Id">Düzenle</a> <a asp-action="Delete" class="btn btn-sm btn-danger" asp-route-id="@item.Id" onclick="return confirm('Bu kaydı silmek istediğinize emin misiniz?');">Sil</a></td>
+			</tr>
+		}
+	</tbody>
+</table>
+

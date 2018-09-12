@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ParentCategoryId" class="control-label"></label>
-                <select asp-for="ParentCategoryId" class ="form-control" asp-items="ViewBag.ParentCategoryId"></select>
+                <select asp-for="ParentCategoryId" class ="form-control" asp-items="ViewBag.ParentCategoryName"></select>
             </div>
             <div class="form-group">
                 <label asp-for="CreatedBy" class="control-label"></label>
@@ -80,9 +80,7 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Kaydet" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-sm btn-default">Geri Dön</a>
-               
-
+                <a asp-action="Index" class="btn btn-sm btn-success">Geri Dön</a>
             </div>
         </form>
     </div>

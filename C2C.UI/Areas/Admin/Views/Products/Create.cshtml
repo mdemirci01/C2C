@@ -1,8 +1,10 @@
-﻿@model Product
+﻿@model C2C.Models.Product
+
 @{
     ViewData["Title"] = "Yeni Ürün";
 }
 
+<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -57,17 +59,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="Availibility" class="control-label"></label>
-                <select asp-for="Availibility" class="form-control" id="formGender" asp-items="@Html.GetEnumSelectList(typeof(Availibility))">
+                <select asp-for="Availibility" class="form-control" asp-items="@Html.GetEnumSelectList(typeof(Availibility))">
                     <option value="">Bulunurluk Seçiniz</option>
                 </select>
-                <span asp-validation-for="Availibility" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Currency" class="control-label"></label>
-                <select asp-for="Currency" class="form-control" id="formGender" asp-items="@Html.GetEnumSelectList(typeof(Currency))">
+                <select asp-for="Currency" class="form-control" asp-items="@Html.GetEnumSelectList(typeof(Currency))">
                     <option value="">Para Birimi Seçiniz</option>
                 </select>
-                <span asp-validation-for="Currency" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Kaydet" class="btn btn-sm btn-primary" />
@@ -76,9 +76,4 @@
         </form>
     </div>
 </div>
-
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
 

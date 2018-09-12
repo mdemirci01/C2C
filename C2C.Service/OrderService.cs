@@ -9,52 +9,52 @@ namespace C2C.Service
 {
     public class OrderService : IOrderService
     {
-        private readonly IRepository<Order> productRepository;
+        private readonly IRepository<Order> orderRepository;
         private readonly IUnitOfWork unitOfWork;
-        public OrderService(IUnitOfWork unitOfWork, IRepository<Order> productRepository)
+        public OrderService(IUnitOfWork unitOfWork, IRepository<Order> orderRepository)
         {
-            this.productRepository = productRepository;
+            this.orderRepository = orderRepository;
             this.unitOfWork = unitOfWork;
         }
 
         public async Task DeleteAsync(Order entity)
         {
-            productRepository.Delete(entity);
+            orderRepository.Delete(entity);
             await unitOfWork.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(string id)
         {
-            var entity = await productRepository.GetAsync(id);
-            productRepository.Delete(entity);
+            var entity = await orderRepository.GetAsync(id);
+            orderRepository.Delete(entity);
             await unitOfWork.SaveChangesAsync();
         }
 
         public async Task<Order> GetAsync(string id)
         {
-            return await productRepository.GetAsync(id);
+            return await orderRepository.GetAsync(id);
         }
 
         public async Task<IEnumerable<Order>> GetAllAsync()
         {
-            return await productRepository.GetAllAsync();
+            return await orderRepository.GetAllAsync();
         }
 
         public async Task InsertAsync(Order entity)
         {
-            productRepository.Insert(entity);
+            orderRepository.Insert(entity);
             await unitOfWork.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(Order entity)
         {
-            productRepository.Update(entity);
+            orderRepository.Update(entity);
             await unitOfWork.SaveChangesAsync();
         }
 
         public async Task<bool> AnyAsync(string id)
         {
-            return await productRepository.AnyAsync(a => a.Id == id);
+            return await orderRepository.AnyAsync(a => a.Id == id);
         }
     }
 

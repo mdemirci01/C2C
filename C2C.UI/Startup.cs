@@ -52,7 +52,9 @@ namespace C2C.UI
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<ICartService, CartService>();
             services.AddTransient<ICartItemService, CartItemService>();
-            services.AddTransient<IStoreService, storeService>();
+            services.AddTransient<IStoreService, StoreService>();
+            services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<IOrderItemService, OrderItemService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

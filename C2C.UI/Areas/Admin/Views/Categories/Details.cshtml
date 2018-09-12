@@ -1,11 +1,13 @@
-﻿@model C2C.Models.Product
+﻿@model C2C.Models.Category
 
 @{
-    ViewData["Title"] = "Sil";
+    ViewData["Title"] = "Detaylar";
 }
 
-<h3>Silmek İstediğinize Emin Misiniz ?</h3>
+
+
 <div>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -21,58 +23,22 @@
             @Html.DisplayFor(model => model.Slug)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ShortDescription)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ShortDescription)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.AdditionalInformation)
+            @Html.DisplayNameFor(model => model.Photo)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.AdditionalInformation)
+            @Html.DisplayFor(model => model.Photo)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.OldPrice)
+            @Html.DisplayNameFor(model => model.ParentCategory)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.OldPrice)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.IsPublished)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IsPublished)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Category.Id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Availibility)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Availibility)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Currency)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Currency)
+            @Html.DisplayFor(model => model.ParentCategory.Id)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.CreatedBy)
@@ -123,10 +89,8 @@
             @Html.DisplayFor(model => model.IpAddress)
         </dd>
     </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Sil" class="btn btn-sm btn-primary" />
-        <a asp-action="Index" class="btn btn-sm btn-danger">İptal</a>
-    </form>
+</div>
+<div>
+    <a  class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@Model.Id">Düzenle</a> |
+    <a class="btn btn-sm btn-default" asp-action="Index">Geri Dön</a>
 </div>

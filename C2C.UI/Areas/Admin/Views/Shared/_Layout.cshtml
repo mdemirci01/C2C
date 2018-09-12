@@ -151,6 +151,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <i class="icon-diamond"></i>
                                 <span class="title">Ürünler</span>
                             </a>
+                        </li>
+                        <li class="nav-item @(this.ViewContext.RouteData.Values["controller"].ToString() == "Stores"?"active":"")">
                             <a asp-action="Index" asp-controller="Stores" class="nav-link">
                                 <i class="icon-diamond"></i>
                                 <span class="title">Mağazalar</span>

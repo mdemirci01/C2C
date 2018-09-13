@@ -1,13 +1,12 @@
 ﻿@model C2C.Models.Store
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Düzenle";
 }
 
-<h2>Düzenle</h2>
 
-<h4>Mağaza</h4>
-<hr />
+
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -70,7 +69,7 @@
                 <span asp-validation-for="ContactName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Kaydet" class="btn btn-default" />
                 <a asp-action="Index" class="btn btn-sm btn-danger">İptal</a>
             </div>
         </form>

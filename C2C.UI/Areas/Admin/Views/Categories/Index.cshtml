@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<C2C.Models.Category>
 
 @{
-    ViewData["Title"] = "Kategoriler";
+    ViewData["Title"] = "";
 }
 
 
 <p>
-    <a class="btn  btn-primary" asp-action="Create">Yeni kategori Ekle</a>
+    <a class="btn  btn-primary" asp-action="Create">Yeni Kategori</a>
 </p>
 <table id="tblRecords" class="table">
     <thead>
@@ -96,8 +96,8 @@
                 @Html.DisplayFor(modelItem => item.IpAddress)
             </td>
             <td class="text-nowrap">
-                <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |
-                <a class="btn btn-sm btn-default" asp-action="Details" asp-route-id="@item.Id">Detaylar</a> |
+                <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> 
+                <a class="btn btn-sm btn-default" asp-action="Details" asp-route-id="@item.Id">Detaylar</a> 
                 <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
             </td>
         </tr>

@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace C2C.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180913095121_InitialCreate")]
+    [Migration("20180913114357_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.2-rtm-30932")
+                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -527,8 +527,7 @@ namespace C2C.Data.Migrations
                     b.Property<string>("Phone")
                         .HasMaxLength(200);
 
-                    b.Property<int>("Rating")
-                        .HasMaxLength(200);
+                    b.Property<int>("Rating");
 
                     b.Property<string>("Slug")
                         .HasMaxLength(200);

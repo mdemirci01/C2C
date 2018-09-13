@@ -22,7 +22,6 @@ namespace C2C.Models
         [Display(Name = "Aktif Mi?")]
         public bool IsActive { get; set; }
         [Display(Name = "Değerlendirme")]
-        [StringLength(200)]
         public int Rating { get; set; }
         [Display(Name = "Adres")]
         [StringLength(200)]

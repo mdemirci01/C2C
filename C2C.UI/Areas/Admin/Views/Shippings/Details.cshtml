@@ -1,14 +1,13 @@
 ﻿@model C2C.Models.Shipping
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detaylar";
 }
 
-<h2>Details</h2>
+
 
 <div>
-    <h4>Shipping</h4>
-    <hr />
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -67,6 +66,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-danger">Detaylar</a> 
+    <a asp-action="Index" class="btn  btn-sm btn-success">İptal</a>
 </div>

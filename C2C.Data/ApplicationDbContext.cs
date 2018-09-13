@@ -26,6 +26,7 @@ namespace C2C.Data
         public DbSet<Store> Stores { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+      
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

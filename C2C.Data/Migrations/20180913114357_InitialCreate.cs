@@ -184,7 +184,7 @@ namespace C2C.Data.Migrations
                     Logo = table.Column<string>(maxLength: 200, nullable: true),
                     Description = table.Column<string>(maxLength: 200, nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
-                    Rating = table.Column<int>(maxLength: 200, nullable: false),
+                    Rating = table.Column<int>(nullable: false),
                     Address = table.Column<string>(maxLength: 200, nullable: true),
                     Phone = table.Column<string>(maxLength: 200, nullable: true),
                     Email = table.Column<string>(maxLength: 200, nullable: true),

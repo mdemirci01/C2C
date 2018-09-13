@@ -57,7 +57,7 @@
             <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.IpAddress)
             </th>
-            <th class="text-nowrap-all">Eylemler</th>
+            <th class="text-nowrap all" data-orderable="false">Eylemler</th>
         </tr>
     </thead>
     <tbody>
@@ -108,10 +108,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IpAddress)
             </td>
-            <td class="text-nowrap-all">
-                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Düzenle</a> 
-                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-default">Detaylar</a> 
-                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Sil</a>
+            <td class="text-nowrap">
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

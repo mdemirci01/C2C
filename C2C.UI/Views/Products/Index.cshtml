@@ -98,7 +98,7 @@
                     @Html.DisplayFor(modelItem => item.IsPublished)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Category.Id)
+                    @Html.DisplayFor(modelItem => item.Category.Name)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Availibility)
@@ -130,7 +130,8 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.IpAddress)
                 </td>
-                <td>
+                <td class="text-nowrap">
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-success">Sepete Ekle</a>
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-default">Detaylar</a>
                 </td>
             </tr>

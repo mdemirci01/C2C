@@ -112,7 +112,7 @@ namespace C2C.UI.Areas.Admin.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OrderExists(order.Id))
+					if (!OrderExists(order.Id)) 
                     {
                         return NotFound();
                     }

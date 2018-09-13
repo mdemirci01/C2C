@@ -1,0 +1,70 @@
+﻿@model C2C.Models.Order
+
+@{
+    ViewData["Title"] = "Sipariş Detayı";
+}
+
+<h2>Sipariş Detayı</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cart)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cart.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderStatus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Coupon)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Coupon.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderSubtotal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderSubtotal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscountTotal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DiscountTotal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShippingTotal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ShippingTotal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TaxTotal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TaxTotal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderTotal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderTotal)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-sm btn-default">Geri Dön</a>
+</div>

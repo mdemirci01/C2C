@@ -184,7 +184,7 @@ namespace C2C.Data.Migrations
                     Logo = table.Column<string>(maxLength: 200, nullable: true),
                     Description = table.Column<string>(maxLength: 200, nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
-                    Rating = table.Column<float>(maxLength: 200, nullable: false),
+                    Rating = table.Column<int>(maxLength: 200, nullable: false),
                     Address = table.Column<string>(maxLength: 200, nullable: true),
                     Phone = table.Column<string>(maxLength: 200, nullable: true),
                     Email = table.Column<string>(maxLength: 200, nullable: true),
@@ -332,6 +332,46 @@ namespace C2C.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedBy = table.Column<string>(nullable: true),
+                    UpdatedAt = table.Column<DateTime>(nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedBy = table.Column<string>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: false),
+                    IpAddress = table.Column<string>(maxLength: 50, nullable: true),
+                    CartId = table.Column<string>(nullable: true),
+                    OrderDate = table.Column<DateTime>(nullable: false),
+                    OrderStatus = table.Column<int>(nullable: false),
+                    CouponId = table.Column<string>(nullable: true),
+                    OrderSubtotal = table.Column<decimal>(nullable: false),
+                    DiscountTotal = table.Column<decimal>(nullable: false),
+                    ShippingTotal = table.Column<decimal>(nullable: false),
+                    TaxTotal = table.Column<decimal>(nullable: false),
+                    OrderTotal = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Orders_Carts_CartId",
+                        column: x => x.CartId,
+                        principalTable: "Carts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Orders_Coupons_CouponId",
+                        column: x => x.CouponId,
+                        principalTable: "Coupons",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
@@ -370,6 +410,52 @@ namespace C2C.Data.Migrations
                         name: "FK_Products_Stores_StoreId",
                         column: x => x.StoreId,
                         principalTable: "Stores",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrderItems",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedBy = table.Column<string>(nullable: true),
+                    UpdatedAt = table.Column<DateTime>(nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedBy = table.Column<string>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: false),
+                    IpAddress = table.Column<string>(maxLength: 50, nullable: true),
+                    OrderId = table.Column<string>(nullable: true),
+                    ProductId = table.Column<string>(nullable: true),
+                    ProductName = table.Column<string>(nullable: true),
+                    Price = table.Column<decimal>(nullable: false),
+                    Quantity = table.Column<int>(nullable: false),
+                    SubTotal = table.Column<decimal>(nullable: false),
+                    ShippingTotal = table.Column<decimal>(nullable: false),
+                    Tax = table.Column<int>(nullable: false),
+                    ShippingId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OrderItems_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_OrderItems_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_OrderItems_Shippings_ShippingId",
+                        column: x => x.ShippingId,
+                        principalTable: "Shippings",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -486,6 +572,31 @@ namespace C2C.Data.Migrations
                 column: "ParentCategoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_OrderId",
+                table: "OrderItems",
+                column: "OrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_ProductId",
+                table: "OrderItems",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_ShippingId",
+                table: "OrderItems",
+                column: "ShippingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_CartId",
+                table: "Orders",
+                column: "CartId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_CouponId",
+                table: "Orders",
+                column: "CouponId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProductPhotos_ProductId",
                 table: "ProductPhotos",
                 column: "ProductId");
@@ -527,10 +638,10 @@ namespace C2C.Data.Migrations
                 name: "CartItems");
 
             migrationBuilder.DropTable(
-                name: "Coupons");
+                name: "Customers");
 
             migrationBuilder.DropTable(
-                name: "Customers");
+                name: "OrderItems");
 
             migrationBuilder.DropTable(
                 name: "ProductPhotos");
@@ -539,19 +650,25 @@ namespace C2C.Data.Migrations
                 name: "Reviews");
 
             migrationBuilder.DropTable(
-                name: "Shippings");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Carts");
+                name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "Shippings");
 
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Carts");
+
+            migrationBuilder.DropTable(
+                name: "Coupons");
 
             migrationBuilder.DropTable(
                 name: "Categories");

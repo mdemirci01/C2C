@@ -23,7 +23,7 @@ namespace C2C.Models
         public bool IsActive { get; set; }
         [Display(Name = "Değerlendirme")]
         [StringLength(200)]
-        public float Rating { get; set; }
+        public int Rating { get; set; }
         [Display(Name = "Adres")]
         [StringLength(200)]
         public string Address { get; set; }

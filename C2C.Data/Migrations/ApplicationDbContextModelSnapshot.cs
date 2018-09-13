@@ -525,7 +525,7 @@ namespace C2C.Data.Migrations
                     b.Property<string>("Phone")
                         .HasMaxLength(200);
 
-                    b.Property<float>("Rating")
+                    b.Property<int>("Rating")
                         .HasMaxLength(200);
 
                     b.Property<string>("Slug")

@@ -52,7 +52,7 @@ namespace C2C.UI.Areas.Identity.Pages.Account
 
             [DataType(DataType.Password)]
             [Display(Name = "Şifre doğrula")]
-            [Compare("Şifre", ErrorMessage = "Şifre ile doğrulama şifresi uyuşmuyor.")]
+            [Compare("Password", ErrorMessage = "Şifre ile doğrulama şifresi uyuşmuyor.")]
             public string ConfirmPassword { get; set; }
         }
 

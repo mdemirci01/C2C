@@ -7,13 +7,17 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.3" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.4" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\C2C.Data\C2C.Data.csproj" />
     <ProjectReference Include="..\C2C.Models\C2C.Models.csproj" />
     <ProjectReference Include="..\C2C.Service\C2C.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Services\" />
   </ItemGroup>
 
 </Project>

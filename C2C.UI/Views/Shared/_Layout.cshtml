@@ -8,6 +8,9 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+
+        <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -30,9 +33,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Ansayfa</a></li>
+                    <li><a asp-area="" asp-controller="Stores" asp-action="Index">Mağazalar</a></li>
+                    <li><a asp-area="" asp-controller="Products" asp-action="Index">Ürünler</a></li>
+                    <li><a asp-area="" asp-controller="Orders" asp-action="Index">Siparişler</a></li>
+                    <li><a asp-area="" asp-controller="Carts" asp-action="Index">Sepet</a></li>
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
@@ -69,6 +74,19 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
+
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tblRecords').DataTable({
+                "responsive": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Turkish.json"
+                }
+            });
+        });
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>

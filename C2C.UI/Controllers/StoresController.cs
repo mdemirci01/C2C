@@ -2,36 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using C2C.Data;
+using C2C.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace C2C.UI.Controllers
 {
     public class StoresController : Controller
     {
-        public IActionResult Index()
+		private readonly ApplicationDbContext context;
+		public StoresController(ApplicationDbContext context)
+		{
+			this.context = context;
+		}
+
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await context.Stores.ToListAsync());
         }
 
-		public IActionResult Create()
-		{
-			return View();
-		}
+        public async Task<IActionResult> Details(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-		public IActionResult Edit()
-		{
-			return View();
-		}
+            var store = await context.Stores
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (store == null)
+            {
+                return NotFound();
+            }
 
-		public IActionResult Delete()
-		{
-			return View();
-		}
-
-		public IActionResult Detalis()
-		{
-			return View();
-		}
+            return View(store);
+        }
     }
 
 }

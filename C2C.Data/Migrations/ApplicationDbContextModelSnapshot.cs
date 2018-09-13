@@ -15,7 +15,7 @@ namespace C2C.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.2-rtm-30932")
+                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -206,6 +206,106 @@ namespace C2C.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("C2C.Models.Order", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CartId");
+
+                    b.Property<string>("CouponId");
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime>("DeletedAt");
+
+                    b.Property<string>("DeletedBy");
+
+                    b.Property<decimal>("DiscountTotal");
+
+                    b.Property<string>("IpAddress")
+                        .HasMaxLength(50);
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime>("OrderDate");
+
+                    b.Property<int>("OrderStatus");
+
+                    b.Property<decimal>("OrderSubtotal");
+
+                    b.Property<decimal>("OrderTotal");
+
+                    b.Property<decimal>("ShippingTotal");
+
+                    b.Property<decimal>("TaxTotal");
+
+                    b.Property<DateTime>("UpdatedAt");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("CouponId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("C2C.Models.OrderItem", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime>("DeletedAt");
+
+                    b.Property<string>("DeletedBy");
+
+                    b.Property<string>("IpAddress")
+                        .HasMaxLength(50);
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<string>("OrderId");
+
+                    b.Property<decimal>("Price");
+
+                    b.Property<string>("ProductId");
+
+                    b.Property<string>("ProductName");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<string>("ShippingId");
+
+                    b.Property<decimal>("ShippingTotal");
+
+                    b.Property<decimal>("SubTotal");
+
+                    b.Property<int>("Tax");
+
+                    b.Property<DateTime>("UpdatedAt");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("ShippingId");
+
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("C2C.Models.Product", b =>
@@ -425,8 +525,7 @@ namespace C2C.Data.Migrations
                     b.Property<string>("Phone")
                         .HasMaxLength(200);
 
-                    b.Property<float>("Rating")
-                        .HasMaxLength(200);
+                    b.Property<int>("Rating");
 
                     b.Property<string>("Slug")
                         .HasMaxLength(200);
@@ -617,6 +716,32 @@ namespace C2C.Data.Migrations
                     b.HasOne("C2C.Models.Category", "ParentCategory")
                         .WithMany("ChildCategories")
                         .HasForeignKey("ParentCategoryId");
+                });
+
+            modelBuilder.Entity("C2C.Models.Order", b =>
+                {
+                    b.HasOne("C2C.Models.Cart", "Cart")
+                        .WithMany()
+                        .HasForeignKey("CartId");
+
+                    b.HasOne("C2C.Models.Coupon", "Coupon")
+                        .WithMany()
+                        .HasForeignKey("CouponId");
+                });
+
+            modelBuilder.Entity("C2C.Models.OrderItem", b =>
+                {
+                    b.HasOne("C2C.Models.Order", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId");
+
+                    b.HasOne("C2C.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
+
+                    b.HasOne("C2C.Models.Shipping", "Shipping")
+                        .WithMany()
+                        .HasForeignKey("ShippingId");
                 });
 
             modelBuilder.Entity("C2C.Models.Product", b =>

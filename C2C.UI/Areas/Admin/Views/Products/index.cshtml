@@ -1,13 +1,11 @@
 ﻿@model IEnumerable<C2C.Models.Product>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Ürünler";
 }
 
-<h2>Index</h2>
-
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-sm btn-primary">Yeni Ürün</a>
 </p>
 <table id="tblRecords" class="table" >
     <thead>
@@ -100,7 +98,7 @@
                 @Html.DisplayFor(modelItem => item.IsPublished)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Category.Id)
+                @Html.DisplayFor(modelItem => item.Category.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Availibility)

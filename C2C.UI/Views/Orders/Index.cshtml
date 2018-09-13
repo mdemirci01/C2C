@@ -1,0 +1,78 @@
+﻿@model IEnumerable<C2C.Models.Order>
+
+@{
+    ViewData["Title"] = "Siparişler";
+}
+
+<h2>Siparişler</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Coupon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderSubtotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiscountTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippingTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaxTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderTotal)
+            </th>
+            <th class="text-nowrap all">Eylemler</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cart.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Coupon.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderSubtotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiscountTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaxTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderTotal)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-default">Detaylar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

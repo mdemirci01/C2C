@@ -44,5 +44,10 @@ namespace C2C.UI.Controllers
 
             return View(product);
         }
-    }
+		public IActionResult Create()
+		{
+			ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
+			return View();
+		}
+	}
 }

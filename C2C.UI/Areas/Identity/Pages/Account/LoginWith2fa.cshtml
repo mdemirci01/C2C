@@ -1,12 +1,12 @@
 ﻿@page
 @model LoginWith2faModel
 @{
-    ViewData["Title"] = "Two-factor authentication";
+    ViewData["Title"] = "İki faktörlü kimlik doğrulama";
 }
 
 <h2>@ViewData["Title"]</h2>
 <hr />
-<p>Your login is protected with an authenticator app. Enter your authenticator code below.</p>
+<p>Girişiniz kimlik doğrulama uygulamasıyla doğrulanmaktadır. Kimlik doğrulama kodunuzu aşağıya giriniz.</p>
 <div class="row">
     <div class="col-md-4">
         <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
@@ -26,13 +26,13 @@
                 </div>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-default">Log in</button>
+                <button type="submit" class="btn btn-default">Giriş yap</button>
             </div>
         </form>
     </div>
 </div>
 <p>
-    Don't have access to your authenticator device? You can 
+    Kimlik doğrulama cihazınıza erişiminiz yok mu? Yapabilirsin.
     <a asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">log in with a recovery code</a>.
 </p>
 

@@ -49,5 +49,6 @@ namespace C2C.UI.Controllers
 			ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
 			return View();
 		}
+         
 	}
 }

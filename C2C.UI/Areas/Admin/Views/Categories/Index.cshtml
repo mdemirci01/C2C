@@ -5,7 +5,6 @@
 }
 
 
-
 <p>
     <a class="btn  btn-primary" asp-action="Create">Yeni kategori Ekle</a>
 </p>
@@ -51,7 +50,7 @@
             <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.IpAddress)
             </th>
-            <th class="text-nowrap" data-orderable="false">Eylemler</th>
+            <th class="text-nowrap all" data-orderable="false">Eylemler</th>
         </tr>
     </thead>
     <tbody>
@@ -96,10 +95,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IpAddress)
             </td>
-            <td>
+            <td class="text-nowrap">
                 <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |
-                <a class="btn-btn-sm btn-default" asp-action="Details" asp-route-id="@item.Id">Detaylar</a> |
-                <a  class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                <a class="btn btn-sm btn-default" asp-action="Details" asp-route-id="@item.Id">Detaylar</a> |
+                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
             </td>
         </tr>
 }

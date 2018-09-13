@@ -49,7 +49,7 @@ namespace C2C.UI.Areas.Admin.Controllers
         // GET: Admin/Categories/Create
         public IActionResult Create()
         {
-            ViewData["ParentCategoryId"] = new SelectList(_context.Categories, "Id", "Id");
+            ViewData["ParentCategoryId"] = new SelectList(_context.Categories, "Id", "Name");
             return View();
         }
 
@@ -66,7 +66,7 @@ namespace C2C.UI.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ParentCategoryId"] = new SelectList(_context.Categories, "Id", "Id", category.ParentCategoryId);
+            ViewData["ParentCategoryId"] = new SelectList(_context.Categories, "Id", "Name", category.ParentCategoryId);
             return View(category);
         }
 
@@ -83,7 +83,7 @@ namespace C2C.UI.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["ParentCategoryId"] = new SelectList(_context.Categories, "Id", "Id", category.ParentCategoryId);
+            ViewData["ParentCategoryId"] = new SelectList(_context.Categories, "Id", "Name", category.ParentCategoryId);
             return View(category);
         }
 
@@ -119,7 +119,7 @@ namespace C2C.UI.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ParentCategoryId"] = new SelectList(_context.Categories, "Id", "Id", category.ParentCategoryId);
+            ViewData["ParentCategoryId"] = new SelectList(_context.Categories, "Id", "Name", category.ParentCategoryId);
             return View(category);
         }
 

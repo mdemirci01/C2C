@@ -1,0 +1,119 @@
+﻿@model C2C.Models.Order
+
+@{
+    ViewData["Title"] = "";
+}
+
+<h2>Sipariş Detayları</h2>
+
+<div>
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cart)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cart.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderStatus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Coupon)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Coupon.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderSubtotal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderSubtotal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscountTotal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DiscountTotal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShippingTotal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ShippingTotal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TaxTotal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TaxTotal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderTotal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderTotal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeletedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeletedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeletedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeletedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IpAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IpAddress)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-danger">Düzenle</a> 
+    <a asp-action="Index"  class="btn btn-sm btn-primary">İptal</a>
+</div>

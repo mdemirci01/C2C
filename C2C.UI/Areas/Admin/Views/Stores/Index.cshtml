@@ -1,0 +1,142 @@
+﻿@model IEnumerable<C2C.Models.Store>
+
+@{
+    ViewData["Title"] = "Mağazalar";
+}
+
+
+<p>
+    <a asp-action="Create" class="btn btn-sm btn-primary">Yeni Mağaza</a>
+</p>
+<table id="tblRecords" class="table">
+    <thead>
+        <tr>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.Slug)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.Logo)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.Owner)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.ContactName)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.UpdatedAt)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.DeletedBy)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.DeletedAt)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.IpAddress)
+            </th>
+            <th class="text-nowrap all">Eylemler</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Slug)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Logo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Owner)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeletedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeletedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IpAddress)
+            </td>
+            <td class="text-nowrap">
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-success">Düzenle</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-default">Detaylar</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

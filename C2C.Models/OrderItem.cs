@@ -9,8 +9,6 @@ namespace C2C.Models
         public string OrderId { get; set; }
         [Display(Name = "Sipariş")]
         [ForeignKey("OrderId")]
-        public Order Order { get; set; }
-        [Display(Name = "Ürün")]
         public string ProductId { get; set; }
         [Display(Name = "Ürün")]
         [ForeignKey("ProductId")]

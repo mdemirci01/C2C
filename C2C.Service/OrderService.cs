@@ -56,7 +56,42 @@ namespace C2C.Service
         {
             return await orderRepository.AnyAsync(a => a.Id == id);
         }
-    }
+
+		Task<IEnumerable<Order>> IOrderService.GetAllAsync()
+		{
+			throw new NotImplementedException();
+		}
+
+		Task<Order> IOrderService.GetAsync(string id)
+		{
+			throw new NotImplementedException();
+		}
+
+		Task IOrderService.InsertAsync(Order entity)
+		{
+			throw new NotImplementedException();
+		}
+
+		Task IOrderService.UpdateAsync(Order entity)
+		{
+			throw new NotImplementedException();
+		}
+
+		Task IOrderService.DeleteAsync(Order entity)
+		{
+			throw new NotImplementedException();
+		}
+
+		Task IOrderService.DeleteAsync(string id)
+		{
+			throw new NotImplementedException();
+		}
+
+		Task<bool> IOrderService.AnyAsync(string id)
+		{
+			throw new NotImplementedException();
+		}
+	}
 
     public interface IOrderService
     {

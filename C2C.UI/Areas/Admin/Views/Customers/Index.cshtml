@@ -1,0 +1,119 @@
+﻿@model IEnumerable<C2C.Models.Customer>
+
+@{
+    ViewData["Title"] = "";
+}
+
+
+
+<p>
+    <a asp-action="Create" class="btn btn-sm btn-primary">Yeni Müşteri</a>
+</p>
+<table class="table"  id="tblRecords" >
+    <thead>
+        <tr>
+            <th class="text-nowrap-all">
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th  class="text-nowrap">
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th  class="text-nowrap">
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.ShippingAddress)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.InvoiceAddress)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.UpdatedAt)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.DeletedBy)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.DeletedAt)
+            </th>
+            <th class="text-nowrap">
+                @Html.DisplayNameFor(model => model.IpAddress)
+            </th>
+            <th class="text-nowrap all" data-orderable="false">Eylemler</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeletedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeletedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IpAddress)
+            </td>
+            <td class="text-nowrap">
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

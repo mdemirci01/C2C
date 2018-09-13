@@ -1,0 +1,81 @@
+﻿@model C2C.Models.Customer
+
+@{
+    ViewData["Title"] = "Düzenle";
+}
+
+
+
+
+<div class="row" >
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <select asp-for="Gender" class="form-control"></select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="form-control" />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingAddress" class="control-label"></label>
+                <input asp-for="ShippingAddress" class="form-control" />
+                <span asp-validation-for="ShippingAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoiceAddress" class="control-label"></label>
+                <input asp-for="InvoiceAddress" class="form-control" />
+                <span asp-validation-for="InvoiceAddress" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <div class="">
+                    <label>
+                        <input asp-for="IsDeleted" /> @Html.DisplayNameFor(model => model.IsDeleted)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeletedBy" class="control-label"></label>
+                <input asp-for="DeletedBy" class="form-control" />
+                <span asp-validation-for="DeletedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeletedAt" class="control-label"></label>
+                <input asp-for="DeletedAt" class="form-control" />
+                <span asp-validation-for="DeletedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IpAddress" class="control-label"></label>
+                <input asp-for="IpAddress" class="form-control" />
+                <span asp-validation-for="IpAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+                <a asp-action="Index" class="btn btn-sm btn-success">İptal</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

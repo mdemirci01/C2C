@@ -1,43 +1,43 @@
 ﻿@model IEnumerable<C2C.Models.Shipping>
 
 @{
-    ViewData["Title"] = "Kargolar";
+    ViewData["Title"] = "";
 }
 
 <p>
     <a asp-action="Create" class="btn btn-sm btn-primary">Yeni Nakliye</a>
 </p>
-<table class="table">
+<table class="table" id="tblRecords" >
     <thead>
         <tr>
-            <th>
+            <th class="text-nowrap-all">
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.CreatedBy)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.CreatedAt)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.UpdatedBy)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.UpdatedAt)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.IsDeleted)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.DeletedBy)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.DeletedAt)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.IpAddress)
             </th>
-            <th></th>
+            <th class="text-nowrap-all">Eylemler</th>
         </tr>
     </thead>
     <tbody>
@@ -70,10 +70,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IpAddress)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            <td class="text-nowrap">
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Düzenle</a> 
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Detaylar</a> 
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-default">Sil</a>
             </td>
         </tr>
 }

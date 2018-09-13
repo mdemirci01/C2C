@@ -1,60 +1,60 @@
 ﻿@model IEnumerable<C2C.Models.Customer>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "";
 }
 
-<h2>Index</h2>
+
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-sm btn-primary">Yeni Müşteri</a>
 </p>
-<table id="tblRecords" class="table">
+<table class="table"  id="tblRecords" >
     <thead>
         <tr>
-            <th>
+            <th class="text-nowrap-all">
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
-            <th>
+            <th  class="text-nowrap">
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
-            <th>
+            <th  class="text-nowrap">
                 @Html.DisplayNameFor(model => model.Gender)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.BirthDate)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.ShippingAddress)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.InvoiceAddress)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.CreatedBy)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.CreatedAt)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UpdatedBy)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.UpdatedAt)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.IsDeleted)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.DeletedBy)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.DeletedAt)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.IpAddress)
             </th>
             <th class="text-nowrap all" data-orderable="false">Eylemler</th>

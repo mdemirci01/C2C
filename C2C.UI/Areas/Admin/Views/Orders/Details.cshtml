@@ -1,14 +1,13 @@
 ﻿@model C2C.Models.Order
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "";
 }
 
-<h2>Details</h2>
+<h2>Sipariş Detayları</h2>
 
 <div>
-    <h4>Order</h4>
-    <hr />
+    
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Cart)
@@ -115,6 +114,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-danger">Düzenle</a> 
+    <a asp-action="Index"  class="btn btn-sm btn-primary">İptal</a>
 </div>

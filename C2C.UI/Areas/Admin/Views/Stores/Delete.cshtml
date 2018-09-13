@@ -1,15 +1,14 @@
 ﻿@model C2C.Models.Store
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Sil";
 }
 
-<h2>Sil</h2>
+
 
 <h3>Bunu silmek istediğinizden emin misiniz ?</h3>
 <div>
-    <h4>Mağaza</h4>
-    <hr />
+ 
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -129,7 +128,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-default" />
+        <input type="submit" value="Sil" class="btn btn-default" />
         <a asp-action="Index" class="btn btn-sm btn-danger">İptal</a>
     </form>
 </div>

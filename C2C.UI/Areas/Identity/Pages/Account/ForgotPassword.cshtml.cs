@@ -55,8 +55,8 @@ namespace C2C.UI.Areas.Identity.Pages.Account
 
                 await _emailSender.SendEmailAsync(
                     Input.Email,
-                    "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    "Şifreyi yenile",
+                    $"Lütfen <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>buraya tıklayarak şifrenizi yenileyiniz</a>.");
 
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }

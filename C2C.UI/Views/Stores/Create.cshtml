@@ -1,15 +1,14 @@
 ﻿@model C2C.Models.Store
 
 @{
-    ViewData["Title"] = "Düzenle";
+    ViewData["Title"] = "Yeni Mağaza";
 }
 
 
-
-
+<hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -28,11 +27,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <textarea asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <div class="checkbox">
+                <div class="">
                     <label>
                         <input asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
                     </label>
@@ -45,7 +44,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
+                <textarea asp-for="Address" class="form-control"></textarea>
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -69,7 +68,7 @@
                 <span asp-validation-for="ContactName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Kaydet" class="btn btn-default" />
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
                 <a asp-action="Index" class="btn btn-sm btn-danger">İptal</a>
             </div>
         </form>

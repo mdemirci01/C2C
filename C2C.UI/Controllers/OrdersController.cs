@@ -25,7 +25,23 @@ namespace C2C.UI.Controllers
             var applicationDbContext = _context.Orders.Include(o => o.Cart).Include(o => o.Coupon);
             return View(await applicationDbContext.ToListAsync());
         }
-
+        public IActionResult Create()
+        {
+            var order = new Order();
+            return View(order);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("CartId,Cart,OrderDate,OrderStatus,CouponId,Coupon,OrderSubtotal,DiscountTotal,ShippingTotal,TaxTotal,OrderTotal")] Order order)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(order);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(order);
+        }
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(string id)
         {

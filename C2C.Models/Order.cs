@@ -33,6 +33,12 @@ namespace C2C.Models
         public decimal TaxTotal { get; set; }
         [Display(Name = "Sipariş Toplam Tutarı")]
         public decimal OrderTotal { get; set; }
+        public string PaymentMethod { get; set; }
+        [Display(Name = "Müşteri")]
+        public string CustomerId { get; set; }
+        [ForeignKey("CustomerId")]
+        [Display(Name = "Müşteri")]
+        public Customer Customer { get; set; }
 
     }
 }

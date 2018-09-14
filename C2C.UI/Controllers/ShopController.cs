@@ -85,9 +85,19 @@ namespace C2C.UI.Controllers
             return View(cart);
         }
 
+        // sepete göre yeni sipariş yaratır
         [Authorize]
         public IActionResult Checkout(string errorCode = "")
         {
+            Cart cart = GetCart(HttpContext.Session.Id);
+            if (cart == null || cart.CartItems.Count == 0)
+            {
+                cart = GetCart(User.Identity.Name);
+            }
+            if (cart == null || cart.CartItems.Count == 0)
+            {
+                return RedirectToAction("Cart");
+            }
             ViewBag.ErrorCode = errorCode;
             string owner = User.Identity.Name;
             if (string.IsNullOrEmpty(owner))
@@ -98,7 +108,7 @@ namespace C2C.UI.Controllers
             
             return View(order);
         }
-
+        // sipariş kaydını ödeme onayı bekleniyor şeklinde günceller
         [Authorize]
         [HttpPost]
         public IActionResult Checkout(Order order)
@@ -113,22 +123,20 @@ namespace C2C.UI.Controllers
             order.Cart.Owner = owner;
             if (ModelState.IsValid)
             {
-                /*
-                if (order.PaymentMethod == "BankTransfer")
+                order.OrderStatus = OrderStatus.Delayed; // ödeme onayı bekleniyor
+               if (order.PaymentMethod == "BankTransfer")
                 {
-                    order.Customer.Id = order.CustomerId.Value;
                     _context.Update(order);
                     _context.SaveChanges();
                     return RedirectToAction("CheckoutCompleted", new { orderId = order.Id });
                 }
                 else if (order.PaymentMethod == "CC")
                 {
-                    order.Customer.Id = order.CustomerId.Value;
                     _context.Orders.Update(order);
                     _context.SaveChanges();
                     return IyzicoPayment(order);
                 }
-                */
+                
             }
             return View(order);
         }
@@ -147,7 +155,7 @@ namespace C2C.UI.Controllers
             request.Currency = C2C.Models.Currency.TRY.ToString();
             request.BasketId = order.CartId.ToString();
             request.PaymentGroup = PaymentGroup.PRODUCT.ToString();
-            request.CallbackUrl = "https://localhost:44330/Shop/CheckoutCompleted?orderId=" + order.Id.ToString();
+            request.CallbackUrl = "https://localhost:61656/Shop/CheckoutCompleted?orderId=" + order.Id.ToString();
 
             List<int> enabledInstallments = new List<int>();
             enabledInstallments.Add(2);
@@ -179,7 +187,7 @@ namespace C2C.UI.Controllers
             }
             return Redirect(checkoutFormInitialize.PaymentPageUrl);
         }
-        public IActionResult CheckoutCompleted(int orderId)
+        public IActionResult CheckoutCompleted(string orderId)
         {
             return View(model: orderId);
         }

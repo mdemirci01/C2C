@@ -1,4 +1,4 @@
-﻿@model int
+﻿@model string
 @{
     ViewData["Title"] = "CheckoutCompleted";
 }
@@ -35,7 +35,7 @@
             <div class="text-center">
                 <h3>Tebrikler! Siparişiniz tamamlandı!</h3>
                 <p>
-                    Siparişiniz numaranız: #@string.Format("{0:000000}",Model). Siparişinizi profil sayfanızda
+                    Siparişiniz numaranız: #@Model. Siparişinizi profil sayfanızda
                     <a href="" class="text-underline">
                         <mark>siparişlerim</mark>
                     </a> sayfasından takip edebilirsiniz.

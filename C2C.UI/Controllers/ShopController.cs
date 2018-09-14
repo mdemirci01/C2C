@@ -71,7 +71,7 @@ namespace C2C.UI.Controllers
             }
             _context.SaveChanges();
             HttpContext.Session.SetString("CartId", cart.Id.ToString());
-            return Json(cart.CartItems.Sum(ci => ci.Quantity));
+            return RedirectToAction("Cart");
         }
 
         public IActionResult Cart()

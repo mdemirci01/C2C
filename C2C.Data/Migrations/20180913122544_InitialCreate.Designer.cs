@@ -4,14 +4,16 @@ using C2C.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace C2C.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180913122544_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -223,8 +225,6 @@ namespace C2C.Data.Migrations
 
                     b.Property<string>("CreatedBy");
 
-                    b.Property<string>("CustomerId");
-
                     b.Property<DateTime>("DeletedAt");
 
                     b.Property<string>("DeletedBy");
@@ -244,8 +244,6 @@ namespace C2C.Data.Migrations
 
                     b.Property<decimal>("OrderTotal");
 
-                    b.Property<string>("PaymentMethod");
-
                     b.Property<decimal>("ShippingTotal");
 
                     b.Property<decimal>("TaxTotal");
@@ -259,8 +257,6 @@ namespace C2C.Data.Migrations
                     b.HasIndex("CartId");
 
                     b.HasIndex("CouponId");
-
-                    b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
                 });
@@ -739,10 +735,6 @@ namespace C2C.Data.Migrations
                     b.HasOne("C2C.Models.Coupon", "Coupon")
                         .WithMany()
                         .HasForeignKey("CouponId");
-
-                    b.HasOne("C2C.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
                 });
 
             modelBuilder.Entity("C2C.Models.OrderItem", b =>

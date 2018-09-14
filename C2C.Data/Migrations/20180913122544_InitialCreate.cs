@@ -59,7 +59,8 @@ namespace C2C.Data.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedBy = table.Column<string>(nullable: true),
                     DeletedAt = table.Column<DateTime>(nullable: false),
-                    IpAddress = table.Column<string>(maxLength: 50, nullable: true)
+                    IpAddress = table.Column<string>(maxLength: 50, nullable: true),
+                    Owner = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -303,35 +304,6 @@ namespace C2C.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CartItems",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    CreatedBy = table.Column<string>(nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    UpdatedBy = table.Column<string>(nullable: true),
-                    UpdatedAt = table.Column<DateTime>(nullable: false),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedBy = table.Column<string>(nullable: true),
-                    DeletedAt = table.Column<DateTime>(nullable: false),
-                    IpAddress = table.Column<string>(maxLength: 50, nullable: true),
-                    ProductId = table.Column<string>(nullable: true),
-                    Product = table.Column<string>(nullable: true),
-                    Quantity = table.Column<int>(nullable: false),
-                    CartId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CartItems", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_CartItems_Carts_CartId",
-                        column: x => x.CartId,
-                        principalTable: "Carts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
@@ -410,6 +382,40 @@ namespace C2C.Data.Migrations
                         name: "FK_Products_Stores_StoreId",
                         column: x => x.StoreId,
                         principalTable: "Stores",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CartItems",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedBy = table.Column<string>(nullable: true),
+                    UpdatedAt = table.Column<DateTime>(nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedBy = table.Column<string>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: false),
+                    IpAddress = table.Column<string>(maxLength: 50, nullable: true),
+                    ProductId = table.Column<string>(nullable: true),
+                    Quantity = table.Column<int>(nullable: false),
+                    CartId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CartItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CartItems_Carts_CartId",
+                        column: x => x.CartId,
+                        principalTable: "Carts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CartItems_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -565,6 +571,11 @@ namespace C2C.Data.Migrations
                 name: "IX_CartItems_CartId",
                 table: "CartItems",
                 column: "CartId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CartItems_ProductId",
+                table: "CartItems",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_ParentCategoryId",

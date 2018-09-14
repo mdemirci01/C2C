@@ -12,13 +12,24 @@ namespace C2C.Models
         public string ProductId { get; set; }
         [ForeignKey("ProductId")]
         [Display(Name = "Ürün")]
-        public string Product { get; set; }
-        [Display(Name = " Ürün Miktarı")]
+        public Product Product { get; set; }
+
+        [Display(Name = "Ürün Miktarı")]
         public int Quantity { get; set; }
+
         [Display(Name = "Kart")]
         public string CartId { get; set; }
         [ForeignKey("CartId")]
         [Display(Name = "Kart")]
         public Cart Cart { get; set; }
+        
+        [NotMapped]
+        public decimal TotalPrice
+        {
+            get
+            {
+                return Product.Price * Quantity;
+            }
+        }
     }
 }

@@ -1,0 +1,85 @@
+﻿@model string
+@{
+    ViewData["Title"] = "CheckoutCompleted";
+}
+<!-- PAGE TITLE -->
+<section id="page-title" class="page-title-parallax page-title-center text-dark" style="background-image:url(images/parallax/page-title-parallax.jpg);">
+    <div class="container">
+        <div class="page-title col-md-8">
+            <h1>Sipariş Tamamlandı</h1>
+            <span>Tebrikler! Siparişiniz tamamlandı!</span>
+        </div>
+        <div class="breadcrumb col-md-4">
+            <ul>
+                <li>
+                    <a href="#"><i class="fa fa-home"></i></a>
+                </li>
+                <li>
+                    <a href="#">Anasayfa</a>
+                </li>
+                <li>
+                    <a href="#">Alışveriş</a>
+                </li>
+                <li class="active">
+                    <a href="#">Sipariş Tamamlandı</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- END: PAGE TITLE -->
+<!-- SHOP CHECKOUT COMPLETED -->
+<section id="shop-checkout-completed">
+    <div class="container">
+        <div class="p-t-10 m-b-20 text-center">
+            <div class="text-center">
+                <h3>Tebrikler! Siparişiniz tamamlandı!</h3>
+                <p>
+                    Siparişiniz numaranız: #@Model. Siparişinizi profil sayfanızda
+                    <a href="" class="text-underline">
+                        <mark>siparişlerim</mark>
+                    </a> sayfasından takip edebilirsiniz.
+                </p>
+            </div>
+            <a href="#" class="button color button-3d rounded icon-left m-r-10"><span>Go to login page</span></a><a class="button color button-3d rounded icon-left" href="#"><span>Return To Shop</span></a>
+        </div>
+    </div>
+</section>
+<!-- END: SHOP CHECKOUT COMPLETED -->
+<!-- DELIVERY INFO -->
+<section class="background-grey p-t-40 p-b-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="icon-box effect small clean">
+                    <div class="icon">
+                        <a href="#"><i class="fa fa-gift"></i></a>
+                    </div>
+                    <h3>Free shipping on orders $60+</h3>
+                    <p>Order more than 60$ and you will get free shippining Worldwide. More info.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="icon-box effect small clean">
+                    <div class="icon">
+                        <a href="#"><i class="fa fa-plane"></i></a>
+                    </div>
+                    <h3>Worldwide delivery</h3>
+                    <p>We deliver to the following countries: USA, Canada, Europe, Australia</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="icon-box effect small clean">
+                    <div class="icon">
+                        <a href="#"><i class="fa fa-history"></i></a>
+                    </div>
+                    <h3>60 days money back guranty!</h3>
+                    <p>Not happy with our product, feel free to return it, we will refund 100% your money!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END: DELIVERY INFO -->

@@ -22,7 +22,7 @@ namespace C2C.UI.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Orders.Include(o => o.Cart).Include(o => o.Coupon);
+            var applicationDbContext = _context.Orders.Include(o => o.Cart).Include(o => o.Coupon).Where(w =>w.CreatedBy == User.Identity.Name);
             return View(await applicationDbContext.ToListAsync());
         }
         public IActionResult Create()

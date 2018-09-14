@@ -37,6 +37,8 @@ namespace C2C.Data.Migrations
 
                     b.Property<bool>("IsDeleted");
 
+                    b.Property<string>("Owner");
+
                     b.Property<DateTime>("UpdatedAt");
 
                     b.Property<string>("UpdatedBy");
@@ -66,8 +68,6 @@ namespace C2C.Data.Migrations
 
                     b.Property<bool>("IsDeleted");
 
-                    b.Property<string>("Product");
-
                     b.Property<string>("ProductId");
 
                     b.Property<int>("Quantity");
@@ -79,6 +79,8 @@ namespace C2C.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("CartItems");
                 });
@@ -709,6 +711,10 @@ namespace C2C.Data.Migrations
                     b.HasOne("C2C.Models.Cart", "Cart")
                         .WithMany("CartItems")
                         .HasForeignKey("CartId");
+
+                    b.HasOne("C2C.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("C2C.Models.Category", b =>
@@ -731,7 +737,7 @@ namespace C2C.Data.Migrations
 
             modelBuilder.Entity("C2C.Models.OrderItem", b =>
                 {
-                    b.HasOne("C2C.Models.Order", "Order")
+                    b.HasOne("C2C.Models.Order")
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId");
 

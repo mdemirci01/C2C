@@ -1,0 +1,189 @@
+﻿@model C2C.Models.Cart
+@{
+    ViewData["Title"] = "Sepet";
+}
+
+<!-- PAGE TITLE -->
+<section id="page-title" class="page-title-parallax page-title-center text-dark" style="background-image:url(images/parallax/page-title-parallax.jpg);">
+    <div class="container">
+        <div class="page-title col-md-8">
+            <h1>Sepet</h1>
+            <span>Sepet Detayları</span>
+        </div>
+        <div class="breadcrumb col-md-4">
+            <ul>
+                <li>
+                    <a href="#"><i class="fa fa-home"></i></a>
+                </li>
+                <li>
+                    <a href="#">Anasayfa</a>
+                </li>
+                <li>
+                    <a href="#">Alışveriş</a>
+                </li>
+                <li class="active">
+                    <a href="#">Sepet</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- END: PAGE TITLE -->
+<!-- SHOP CART -->
+<section id="shop-cart">
+    <div class="container">
+        <div class="shop-cart">
+            <div class="table table-condensed table-striped table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="cart-product-remove"></th>
+                            <th class="cart-product-thumbnail">Ürün</th>
+                            <th class="cart-product-name">Açıklama</th>
+                            <th class="cart-product-price">Birim Fiyat</th>
+                            <th class="cart-product-quantity">Adet</th>
+                            <th class="cart-product-subtotal">Toplam</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.CartItems)
+                        {
+                            <tr>
+                                <td class="cart-product-remove">
+                                    <a asp-action="RemoveFromCart" asp-controller="Shop" asp-route-cartItemId="@item.Id"><i class="fa fa-close"></i></a>
+                                </td>
+
+                                <td class="cart-product-thumbnail">
+                                    <a href="@Url.Action("Details","Products",new { id = item.Id })">
+                                        <!--<img src="~/Uploads/item.Product.Photo" alt="item.Product.Name"> -->
+                                    </a>
+                                    <div class="cart-product-thumbnail-name">@item.Product.Name</div>
+                                </td>
+
+                                <td class="cart-product-description">
+
+                                    <p>
+                                        @item.Product.Description
+                                    </p>
+                                </td>
+
+                                <td class="cart-product-price">
+                                    <span class="amount">₺@item.Product.Price</span>
+                                </td>
+
+                                <td class="cart-product-quantity">
+                                    <div class="quantity">
+                                        <input type="button" class="minus" value="-">
+                                        <input type="text" class="qty" value="@item.Quantity" name="quantity">
+                                        <input type="button" class="plus" value="+">
+                                    </div>
+                                </td>
+
+                                <td class="cart-product-subtotal">
+                                    <span class="amount">₺@item.TotalPrice</span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+            </div>
+            
+            <div class="row">
+                <hr class="space">
+                <div class="col-md-6">
+
+                </div>
+                <div class="col-md-6 p-r-10 ">
+                    <div class="table-responsive">
+                        <h4>Sepet Alttoplam</h4>
+
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td class="cart-product-name">
+                                        <strong>Sepet Alttoplam</strong>
+                                    </td>
+
+                                    <td class="cart-product-name text-right">
+                                        <span class="amount">@Model.TotalPrice</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="cart-product-name">
+                                        <strong>Kargo</strong>
+                                    </td>
+
+                                    <td class="cart-product-name  text-right">
+                                        <span class="amount">Ücretsiz Kargo</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="cart-product-name">
+                                        <strong>KDV</strong>
+                                    </td>
+
+                                    <td class="cart-product-name  text-right">
+                                        <span class="amount">₺@string.Format("{0:#,###.##}", Model.TotalPrice*0.18M)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="cart-product-name">
+                                        <strong>Toplam (KDV Dahil)</strong>
+                                    </td>
+
+                                    <td class="cart-product-name text-right">
+                                        <span class="amount color lead"><strong>₺@string.Format("{0:#,###.##}",Model.TotalPrice*1.18M)</strong></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <a asp-action="Checkout" asp-controller="Shop" class="button color button-3d rounded icon-left float-right"><span>Alışverişi Tamamla</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END: SHOP CART -->
+<!-- DELIVERY INFO -->
+<section class="background-grey p-t-40 p-b-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="icon-box effect small clean">
+                    <div class="icon">
+                        <a href="#"><i class="fa fa-gift"></i></a>
+                    </div>
+                    <h3>Free shipping on orders $60+</h3>
+                    <p>Order more than 60$ and you will get free shippining Worldwide. More info.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="icon-box effect small clean">
+                    <div class="icon">
+                        <a href="#"><i class="fa fa-plane"></i></a>
+                    </div>
+                    <h3>Worldwide delivery</h3>
+                    <p>We deliver to the following countries: USA, Canada, Europe, Australia</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="icon-box effect small clean">
+                    <div class="icon">
+                        <a href="#"><i class="fa fa-history"></i></a>
+                    </div>
+                    <h3>60 days money back guranty!</h3>
+                    <p>Not happy with our product, feel free to return it, we will refund 100% your money!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END: DELIVERY INFO -->

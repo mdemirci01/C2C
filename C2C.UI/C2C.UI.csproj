@@ -14,6 +14,7 @@
     <ProjectReference Include="..\C2C.Data\C2C.Data.csproj" />
     <ProjectReference Include="..\C2C.Models\C2C.Models.csproj" />
     <ProjectReference Include="..\C2C.Service\C2C.Service.csproj" />
+    <ProjectReference Include="..\Iyzipay\Iyzipay.csproj" />
   </ItemGroup>
 
   <ItemGroup>
